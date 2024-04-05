@@ -1,6 +1,6 @@
 # User-specific files
 proposal.md
-recomendation_utils.py
+recommendation_utils.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
