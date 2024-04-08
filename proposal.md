@@ -58,14 +58,16 @@ The project will incorporate the following methods to build the recommendation e
 
 1. Collaborative Filtering:
    - User-Item Filtering: Recommendations based on users with similar listening habits.
-   - Item-Item Filtering: Suggesting songs akin to the user's favorite tracks.
+   - Content-Based Filtering: Explained below.
 2. Content-Based Filtering:
    - Using song features (genre, beat, tempo, lyrics) to recommend new songs with matching characteristics.
 3. Rule-Based Systems:
     - Predefined rules such as genre preferences or artist popularity will guide the recommendation of songs.
 
+We will mainly use content-based filtering and rule-based system for this project, because user-item filtering requires a large amount of real user data, which is hard to obtain.
+
 ## Usage
-The music recommendation system will be implemented as a user-friendly web application using the Streamlit framework. Users will be prompted to enter a few song names or artists they enjoy, and they can also specify the number of recommendations they would like to receive.
+The music recommendation system will be implemented as a command-line application. Users will be prompted to enter a few song names or artists they enjoy, and they can also specify the number of recommendations they would like to receive. If time permits, we will deploy our algorithm to a web application using the Streamlit framework, offering a music recommendation system that aims to provide a seamless and personalized experience, helping users discover new music while aligning with their established preferences.
 
 The application will then utilize the developed recommendation algorithms to generate personalized song suggestions based on the user's input and the selected recommendation technique (content-based filtering, collaborative filtering, or rule-based systems).
 
@@ -75,9 +77,7 @@ Additionally, users will have the option to provide more granular preferences, s
 - Audio features (e.g., tempo, energy level) they would like to prioritize
 - Artist popularity or familiarity levels
 
-By allowing users to fine-tune their preferences, the system aims to deliver highly tailored and relevant music recommendations that cater to their individual tastes and desired listening experience. The user interface will present the recommended songs in an intuitive and visually appealing manner, displaying relevant information such as song titles and artists.
-
-Through this interactive and user-friendly interface, the music recommendation system aims to provide a seamless and personalized experience, helping users discover new music while aligning with their established preferences.
+By allowing users to fine-tune their preferences, the system aims to deliver highly tailored and relevant music recommendations that cater to their individual tastes and desired listening experience.
 
 ## Division of Labor:
 - Jiayi Chen:
@@ -93,4 +93,24 @@ Through this interactive and user-friendly interface, the music recommendation s
 The system will provide explanations for each song recommendation, highlighting shared attributes with liked songs (content-based), similarities with other users' preferences (collaborative filtering), or satisfied rules/conditions (rule-based).
 
 ## Technical Specifications:
-Developed in Python using Streamlit for the interactive web application. An annotated bibliography covering recommendation methodologies, music domain applications, and user interaction studies will be included. The system will be modular, extensible, and designed to run in the designated environment with proper documentation.
+- Developed in Python using Streamlit for the interactive web application.
+- An annotated bibliography covering recommendation methodologies, music domain applications, and user interaction studies will be included.
+- The system will be modular, extensible, and designed to run in the designated environment with proper documentation.
+
+## Annotated Bibliography: 
+- K. V, S. B, U. M and V. R, "Machine Learning Model Based System Design For Music Recommendation," 2023 International Conference on System, Computation, Automation and Networking (ICSCAN), PUDUCHERRY, India, 2023, pp. 1-5, doi: 10.1109/ICSCAN58655.2023.10394917.
+  - This paper explores the development of a music recommendation system through content-based filtering techniques. The authors analyze user preferences based on characteristics of previously listened to music to suggest new, appropriate tracks. The abundance of digital music and the challenge of navigating large music libraries underscore the utility of machine learning models in managing and recommending music tailored to individual tastes. This study is pertinent to the development of a music recommendation system that similarly focuses on content-based filtering. The discussion on overcoming the information overload in digital music collections by using automated systems aligns with the project's goals to enhance user experience by recommending songs that not only reflect users' past preferences but also introduce them to new music within their preferred genres and styles. The insights from this paper will guide the enhancement of content-based filtering approaches in the project, ensuring effective utilization of song characteristics such as genre, tempo, and artist details. The emphasis on practical applications in contemporary digital music services provides a valuable perspective for implementing these strategies within the project.
+
+
+- B. McFee, L. Barrington and G. Lanckriet, "Learning Content Similarity for Music Recommendation," in IEEE Transactions on Audio, Speech, and Language Processing, vol. 20, no. 8, pp. 2207-2218, Oct. 2012, doi: 10.1109/TASL.2012.2199109.
+  - This paper addresses the challenge of music recommendation and playlist generation for online radio within a query-by-example framework. It discusses the limitations of current collaborative filtering methods, which rely heavily on historical user data, thus hindering their performance when dealing with novel or less popular musical items. To overcome these challenges, the authors propose an innovative approach to optimize content-based similarity measures by incorporating lessons learned from collaborative filtering data. This allows the recommendation system to extend its reach to novel items effectively, achieving high accuracy while maintaining efficiency in music representation.
+This study is highly relevant to the music recommendation system project, which similarly seeks to integrate content-based filtering alongside other techniques. The proposed method of enhancing content-based approaches by learning from collaborative filtering experiences aligns well with the project's goal of balancing recommendation accuracy with the ability to introduce new and diverse musical options to users. The insights from McFee and colleagues' research can directly influence the development and refinement of the project's recommendation algorithms, particularly in improving how the system handles less popular or newly added songs. This approach ensures that the system remains robust and versatile, capable of delivering personalized music experiences to a wide range of users.
+
+
+- [Anonymous. "Recommendation Systems: Content-Based and Collaborative Filtering Methods."](https://github.com/ugis22/music_recommender/blob/master/content%20based%20recommedation%20system/content_based_music_recommender.ipynb)
+  - This GitHub repository offers a comprehensive overview and implementation of two primary types of recommendation systems: content-based filters and collaborative filters. Content-based filters recommend items to users based on the user's past preferences, using a method that can be likened to a user-specific classification problem. This approach primarily employs keyword matching, where meaningful keywords from a user-liked item's description are used to find similar items. Specifically, the repository highlights the use of Term Frequency-Inverse Document Frequency (TF-IDF) for matching processes in song recommendations. In contrast, collaborative filters predict user preferences based on the likes and dislikes of similar users.
+The repository is pertinent to the development of a music recommendation system project that employs both content-based and collaborative filtering techniques. It provides practical coding examples and theoretical insights that can enhance the understanding and implementation of these recommendation strategies. By exploring the code and methodologies shared in this repository, the project can benefit from proven practices in the field of recommendation systems, especially in handling textual data for content-based filtering. This resource is valuable for implementing efficient and effective content-based filtering processes, thereby improving the accuracy of personalized song recommendations.
+
+- [Anonymous. "Music Recommendation System Visualization using Spotify Dataset"](https://www.kaggle.com/code/saurabhbagchi/music-recommendation-system-using-spotify-dataset)
+  - This kernel presents the development of a music recommendation system using data sourced from Spotify. The author outlines the process of understanding and analyzing the dataset through various visualization techniques and exploratory data analysis (EDA). The primary goal of this EDA is to identify relevant features that can be effectively utilized to build a recommendation system. The kernel provides insights into how data visualization helps in uncovering patterns and relationships within the data that are crucial for feature selection in the recommendation engine.
+This resource is particularly relevant to the music recommendation system project, as it directly deals with the use of Spotify data, similar to the dataset employed in the project. The methodologies demonstrated for data visualization and feature selection through EDA can be instrumental in refining the project's approach to developing its recommendation algorithms. By applying the techniques shared in this kernel, the project can enhance its ability to discern and utilize key musical attributes that influence user preferences, thereby improving the accuracy and personalization of the recommendations provided to users.
