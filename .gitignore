@@ -1,5 +1,8 @@
 # User-specific files
 recommendation_utils.py
+proposal.pdf
+proposal.html
+proposal_files/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
