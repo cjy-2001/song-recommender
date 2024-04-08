@@ -1,20 +1,20 @@
 # Proposal for CS 558 Project: Music Recommendation System
 
 ## Introduction
-The project aims to develop a music recommendation system leveraging a rich dataset of user interactions and song metadata. The system will utilize three primary recommendation techniques to deliver personalized music suggestions:
+The project aims to develop a music recommendation system leveraging a rich dataset of song metadata and user interactions. The system will utilize three primary recommendation techniques to deliver personalized music suggestions:
 
 1. Content-Based Filtering
 2. Collaborative Filtering
 3. Rule-Based Systems
 
-The primary focus will be on content-based filtering and rule-based systems, as the available dataset contains comprehensive song metadata and user interaction data, enabling effective implementation of these approaches. Content-based filtering will analyze the inherent characteristics of songs, such as genre, artist, and audio features, to recommend tracks similar to those a user has previously enjoyed. Rule-based systems will employ predefined rules and conditions to match users with suitable music recommendations based on their preferences and listening history.
+The primary focus will be on content-based filtering and rule-based systems, as the available dataset contains comprehensive song metadata, enabling effective implementation of these approaches. Content-based filtering will analyze the inherent characteristics of songs, such as genre, artist, and audio features, to recommend tracks similar to those a user has previously enjoyed. Rule-based systems will employ predefined rules and conditions to match users with suitable music recommendations based on their preferences and listening history.
 
-While collaborative filtering is a powerful technique that leverages the collective wisdom of user communities to suggest items based on similarities between users, its implementation in this project will be limited due to the lack of extensive real-world user interaction data. However, to explore the potential of collaborative filtering, we have generated a synthetic dataset simulating user interactions, allowing us to conduct experiments and gain insights into this approach.
+While collaborative filtering is a powerful technique that leverages the collective wisdom of user communities to suggest items based on similarities between users, its implementation in this project will be limited due to the lack of extensive real-world user interaction data. However, to explore the potential of collaborative filtering, we have generated a synthetic dataset simulating user interactions. If time permits, we would like to conduct some experiments and gain insights into this approach.
 
-The objective is to provide users with songs that align with their preferences and introduce new music that resonates with their tastes, offering a personalized and enjoyable listening experience.
+The objective is to provide users with songs that align with their preferences and introduce new music that resonates with their tastes, offering a personalized and enjoyable listening experience and providing explanations for each recommendation.
 
 ## Data
-We obtained our data from [Kaggle](https://www.kaggle.com/datasets/vatsalmavani/spotify-dataset/data). The dataset is a comprehensive collection obtained from Spotify and features a robust set of attributes encapsulating song characteristics. The main `song` table includes 1,706,60 records, and all the tables are housed in a SQLite database. The data has been preprocessed to ensure consistency and relevance for the recommendation algorithms. Here is a detailed description of each table and its columns:
+We obtained our data from [Kaggle](https://www.kaggle.com/datasets/vatsalmavani/spotify-dataset/data). The dataset is a comprehensive collection obtained from Spotify and features a robust set of attributes encapsulating song characteristics. The main `song` table includes 1,706,60 records, and all the tables are housed in a SQLite database. We have preprocessed the data to ensure consistency and relevance for the recommendation algorithms. Here is a detailed description of each table and its columns:
 
 1. song
   - `SongId`: Unique identifier for individual songs.
@@ -51,18 +51,23 @@ We obtained our data from [Kaggle](https://www.kaggle.com/datasets/vatsalmavani/
   - `ArtistId`: The ID of the user of the liked song.
   - This table mirrors user interactions with songs, reflecting likes, which are instrumental for user-item collaborative filtering.
 
-We've included the `user_follow` and `user_like` tables in our dataset specifically for testing the collaborative filtering method. It's important to note that the data in these tables is artificial, created solely for the purpose of our experiments to approximate user interactions and preferences.
+We've added the `user_follow` and `user_like` tables to the original Kaggle dataset specifically for testing the collaborative filtering method. It's important to note that the data in these tables is artificial, created solely for the purpose of our experiments to approximate user interactions and preferences.
 
 ## Methodology
 The project will incorporate the following methods to build the recommendation engine:
 
-1. Collaborative Filtering:
-   - User-Item Filtering: Recommendations based on users with similar listening habits.
-   - Content-Based Filtering: Explained below.
-2. Content-Based Filtering:
-   - Using song features (genre, beat, tempo, lyrics) to recommend new songs with matching characteristics.
+1. Content-Based Filtering:
+  - This approach utilizes the intrinsic characteristics of songs, such as genre, beat, tempo, and lyrics, to recommend new tracks that share similar features with the user's preferred songs.
+  - By analyzing the attributes of songs a user has previously enjoyed, the system can identify and suggest new songs that align with their established tastes.
+  - Content-based filtering leverages the rich metadata available in the dataset, allowing for a comprehensive understanding of each song's musical properties and enabling accurate recommendations based on similarity.
+2. Collaborative Filtering:
+  - User-User Filtering: This technique recommends songs based on the preferences of users with similar listening habits.
+  - By identifying users who have historically enjoyed similar songs, the system can suggest new tracks that these like-minded users have positively interacted with.
+  - However, due to the limited availability of real user interaction data, the implementation of user-item filtering will be restricted in this project.
 3. Rule-Based Systems:
-    - Predefined rules such as genre preferences or artist popularity will guide the recommendation of songs.
+  - This approach involves crafting predefined rules and conditions to guide song recommendations.
+  - These rules can encompass various factors, such as genre preferences, artist popularity, or specific audio features.
+  - By establishing a set of rules based on domain knowledge and user preferences, the system can filter and prioritize songs that satisfy these criteria.
 
 We will mainly use content-based filtering and rule-based system for this project, because user-item filtering requires a large amount of real user data, which is hard to obtain.
 
@@ -82,20 +87,16 @@ By allowing users to fine-tune their preferences, the system aims to deliver hig
 ## Division of Labor:
 - Jiayi Chen:
   1. Data Preprocessing: Cleansing and standardizing data for the recommendation engine.
-  2. Algorithm Development: Implementing and tuning the collaborative and content-based filtering algorithms.
+  2. Algorithm Development: Implementing and tuning the content-based filtering algorithms.
+  3. Usser interface implementation: Developing the command-line application for user interaction.
 
 - Harper Qi:
   1. Rule-Based Logic Implementation: Developing the rule-based recommendation logic.
-  2. Testing
-  3. Explanation
+  2. Testing: Conducting thorough testing of the recommendation system to ensure accuracy and reliability.
+  3. Explanation: Designing and implementing the explanation component, providing clear and informative justifications for each recommendation.
 
 ## Explainability:
 The system will provide explanations for each song recommendation, highlighting shared attributes with liked songs (content-based), similarities with other users' preferences (collaborative filtering), or satisfied rules/conditions (rule-based).
-
-## Technical Specifications:
-- Developed in Python using Streamlit for the interactive web application.
-- An annotated bibliography covering recommendation methodologies, music domain applications, and user interaction studies will be included.
-- The system will be modular, extensible, and designed to run in the designated environment with proper documentation.
 
 ## Annotated Bibliography: 
 - K. V, S. B, U. M and V. R, "Machine Learning Model Based System Design For Music Recommendation," 2023 International Conference on System, Computation, Automation and Networking (ICSCAN), PUDUCHERRY, India, 2023, pp. 1-5, doi: 10.1109/ICSCAN58655.2023.10394917.
