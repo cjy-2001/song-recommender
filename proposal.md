@@ -58,7 +58,7 @@ The project will incorporate the following methods to build the recommendation e
 
 1. Content-Based Filtering:
   - This approach utilizes the intrinsic characteristics of songs, such as genre, beat, tempo, and lyrics, to recommend new tracks that share similar features with the user's preferred songs.
-  - By analyzing the attributes of songs a user has previously enjoyed, the system can identify and suggest new songs that align with their established tastes.
+  - By analyzing the attributes of songs a user has provided, the system can identify and suggest new songs that align with their established tastes.
   - Content-based filtering leverages the rich metadata available in the dataset, allowing for a comprehensive understanding of each song's musical properties and enabling accurate recommendations based on similarity.
 2. Collaborative Filtering:
   - User-User Filtering: This technique recommends songs based on the preferences of users with similar listening habits.
@@ -96,7 +96,7 @@ By allowing users to fine-tune their preferences, the system aims to deliver hig
   3. Explanation: Designing and implementing the explanation component, providing clear and informative justifications for each recommendation.
 
 ## Explainability:
-The system will provide explanations for each song recommendation, highlighting shared attributes with liked songs (content-based), similarities with other users' preferences (collaborative filtering), or satisfied rules/conditions (rule-based).
+The system will provide explanations for each song recommendation, highlighting shared attributes with provided songs (content-based), similarities with other users' preferences (collaborative filtering), or satisfied rules/conditions (rule-based).
 
 ## Annotated Bibliography: 
 - K. V, S. B, U. M and V. R, "Machine Learning Model Based System Design For Music Recommendation," 2023 International Conference on System, Computation, Automation and Networking (ICSCAN), PUDUCHERRY, India, 2023, pp. 1-5, doi: 10.1109/ICSCAN58655.2023.10394917.

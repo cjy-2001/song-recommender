@@ -7,12 +7,12 @@ from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
 
 DATABASE_PATH = "music_data.sqlite"
-feature_cols = ['Duration_ms', 'Explicit', 'Mode', 'Key', 'Tempo', 'Energy',
+DEFAULT_FEATURE_COLS = ['Duration_ms', 'Explicit', 'Mode', 'Key', 'Tempo', 'Energy',
                 'Danceability', 'Loudness', 'Acousticness', 'Instrumentalness',
                 'Liveness', 'Speechiness', 'Valence']
 
 # KMeans clustering
-def generate_clusters(n_clusters=80):
+def generate_clusters(n_clusters=80, feature_cols=DEFAULT_FEATURE_COLS):
     print("Performing clustering...")
 
     conn = sqlite3.connect(DATABASE_PATH)
@@ -48,9 +48,6 @@ def check_songs_in_database(song_list):
     
     conn.close()
     return songs_in_database, songs_not_in_database
-
-def get_feature_vectors(songs_df, song_ids):
-    return songs_df.loc[songs_df['SongId'].isin(song_ids), feature_cols]
 
 def allocate_recommendations(cluster_songs, total_recommendations=20):
     cluster_counts = {cluster: len(song_ids) for cluster, song_ids in cluster_songs.items()}
@@ -113,9 +110,9 @@ def get_genre_of_song(song_id):
     conn.close()
     return genres_ids, genre_names
 
-def recommend_songs_by_cluster(liked_song_names, n_recommendations = 5):
+def recommend_songs_by_cluster(liked_song_names, n_recommendations = 5, feature_cols=DEFAULT_FEATURE_COLS):
     songs_in_db, songs_not_in_db = check_songs_in_database(liked_song_names)
-    all_songs_with_clusters_df = generate_clusters()
+    all_songs_with_clusters_df = generate_clusters(80, feature_cols)
     
     cluster_songs = defaultdict(list)
     cluster_genres = defaultdict(set)
@@ -146,7 +143,7 @@ def recommend_songs_by_cluster(liked_song_names, n_recommendations = 5):
     cluster_allocations = allocate_recommendations(cluster_songs)
     final_recommendations = {}
     for cluster, allocation in cluster_allocations.items():
-        cluster_songs_df = candidate_songs_df[candidate_songs_df['Cluster'] == cluster]
+        cluster_songs_df = candidate_songs_df[candidate_songs_df['Cluster'] == cluster].copy()
         cluster_song_features = cluster_songs_df[feature_cols]
         cluster_song_features = cluster_song_features.fillna(cluster_song_features.mean())
         cluster_song_matrix = cluster_song_features.values
@@ -168,6 +165,6 @@ def recommend_songs_by_cluster(liked_song_names, n_recommendations = 5):
     return random_recommendations, songs_not_in_db
 
 if __name__ == '__main__':
-    final_recommendations, songs_not_in_db = recommend_songs_by_cluster(["We Will Rock You"], 5)
+    final_recommendations, songs_not_in_db = recommend_songs_by_cluster(["Harper"], 5)
     print(f'Recommendations: {final_recommendations}') 
     print(f'Songs not in database: {songs_not_in_db}')
