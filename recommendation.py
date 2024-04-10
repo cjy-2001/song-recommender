@@ -91,14 +91,41 @@ def get_artist_names(song_id):
     conn.close()
     return artists_info
 
+def get_genre_of_song(song_id):
+    conn = sqlite3.connect(DATABASE_PATH)
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT GenreId FROM song_genre WHERE SongId = ?", (song_id,))
+    genre_ids_result = cursor.fetchall()
+    
+    genres_ids = []
+    genre_names = []
+    for genre_id_tuple in genre_ids_result:
+        genre_id = genre_id_tuple[0]
+        genres_ids.append(genre_id)
+        cursor.execute("SELECT Name FROM genre WHERE GenreId = ?", (genre_id,))
+        genre_name_result = cursor.fetchone()
+        if genre_name_result:
+            genre_names.append(genre_name_result[0])
+        else:
+            genre_names.append("Unknown Genre")
+    
+    conn.close()
+    return genres_ids, genre_names
+
 def recommend_songs_by_cluster(liked_song_names, n_recommendations = 5):
     songs_in_db, songs_not_in_db = check_songs_in_database(liked_song_names)
     all_songs_with_clusters_df = generate_clusters()
     
     cluster_songs = defaultdict(list)
+    cluster_genres = defaultdict(set)
     for song_name, song_id in songs_in_db.items():
         cluster = all_songs_with_clusters_df.loc[all_songs_with_clusters_df['SongId'] == song_id, 'Cluster'].values[0]
         cluster_songs[cluster].append(song_id)
+
+        genre_ids, genre_names = get_genre_of_song(song_id)
+        for genre_id in genre_ids:
+            cluster_genres[cluster].add(genre_id)
 
     cluster_vectors = {}
     for cluster, song_ids in cluster_songs.items():
@@ -125,9 +152,11 @@ def recommend_songs_by_cluster(liked_song_names, n_recommendations = 5):
         cluster_song_matrix = cluster_song_features.values
 
         similarities = cosine_similarity(cluster_vectors[cluster], cluster_song_matrix)
+        cluster_songs_df['Similarity'] = similarities[0]
+        cluster_songs_df['MatchedGenres'] = cluster_songs_df['SongId'].apply(lambda x: len(set(get_genre_of_song(x)[0]) & cluster_genres[cluster]))
 
-        top_indices = np.argsort(similarities[0])[::-1][:allocation]
-        top_songs = cluster_songs_df.iloc[top_indices]
+        cluster_songs_df = cluster_songs_df.sort_values(['MatchedGenres', 'Similarity'], ascending=[False, False])
+        top_songs = cluster_songs_df.head(allocation)
 
         for _, row in top_songs.iterrows():
             final_recommendations[row['SongId']] = {'Name': row['Name'], 'Artists': get_artist_names(row['SongId'])}
@@ -139,6 +168,6 @@ def recommend_songs_by_cluster(liked_song_names, n_recommendations = 5):
     return random_recommendations, songs_not_in_db
 
 if __name__ == '__main__':
-    final_recommendations, songs_not_in_db = recommend_songs_by_cluster(["rockstar (feat. 21 Savage)"], 5)
+    final_recommendations, songs_not_in_db = recommend_songs_by_cluster(["We Will Rock You"], 5)
     print(f'Recommendations: {final_recommendations}') 
     print(f'Songs not in database: {songs_not_in_db}')
