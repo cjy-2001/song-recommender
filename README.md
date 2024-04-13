@@ -1,6 +1,8 @@
 # CS 558 Music Recommendation System
 This project aims to develop a music recommendation system that provides personalized song suggestions based on a user's provided songs. The system utilizes content-based filtering and rule-based approaches to generate recommendations.
 
+![Music Recommendation App Screenshot](https://github.com/cjy-2001/song-recommender/blob/main/images/main.jpg)
+
 ## Introduction
 The Music Recommendation System is a powerful tool designed to help users discover new songs that align with their music preferences. By analyzing the characteristics of a user's liked songs, such as genre, artist, and audio features, the system generates personalized recommendations tailored to their unique tastes.
 
@@ -92,6 +94,7 @@ The Music Recommendation System employs the following methods:
 The Music Recommendation System provides explanations for each song recommendation. It highlights the shared attributes between the recommended song and the user's liked songs, such as similar genres, artists, or audio features. This transparency helps users understand why a particular song is being recommended to them.
 
 ## Sample Output
+![output](https://github.com/cjy-2001/song-recommender/blob/main/images/output.jpg)
 
 ## Contributors
 - Jiayi Chen:
