@@ -1,4 +1,4 @@
-# CS 558 Music Recommendation System
+# Song Recommender
 This project aims to develop a music recommendation system that provides personalized song suggestions based on a user's provided songs. The system utilizes content-based filtering and rule-based approaches to generate recommendations.
 
 ![Music Recommendation App Screenshot](https://github.com/cjy-2001/song-recommender/blob/main/images/main.jpg)
