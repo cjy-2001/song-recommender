@@ -40,7 +40,7 @@ git clone https://github.com/your-username/music-recommendation-system.git
 2. Install the required dependencies:
    
 ```bash
-pip install -r requirements.txt
+pip install sqlite3, pandas, sklearn, argparse
 ```
 
 3. Ensure you have a SQLite database file named music_data.sqlite containing the necessary music data.

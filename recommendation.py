@@ -2,7 +2,6 @@ from collections import defaultdict
 import sqlite3
 import random
 import pandas as pd
-import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
 
