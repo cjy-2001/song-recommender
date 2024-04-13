@@ -1,5 +1,4 @@
 # CS 558 Music Recommendation System
-
 This project aims to develop a music recommendation system that provides personalized song suggestions based on a user's provided songs. The system utilizes content-based filtering and rule-based approaches to generate recommendations.
 
 ## Introduction
@@ -45,8 +44,16 @@ pip install sqlite3, pandas, sklearn, argparse
 
 3. Ensure you have a SQLite database file named music_data.sqlite containing the necessary music data.
 
+4. *(Optional)* If you want to run the streamlit web application, you will need to install streamlit:
+
+```bash
+pip install streamlit
+```
+
 ## Usage
-To run the Music Recommendation System, use the following command:
+The Music Recommendation System can be run in two ways:
+
+1. Command-line interface: To run the Music Recommendation System using the command-line interface, use the following command:
 
 ```bash
 python script.py -l <liked_songs> [-n <num_recommendations>] [-f <feature_cols>]
@@ -61,6 +68,20 @@ Example:
 ```bash
 python script.py -l "Shape of You" "Believer" "Havana" -n 10
 ```
+
+2. Streamlit web application: To run the Music Recommendation System as a Streamlit web application, use the following command:
+
+```bash
+streamlit run app.py
+```
+
+This will start the Streamlit server and open the Music Recommender application in your default web browser. Once the application is running, you can interact with it through the web interface:
+- Enter the exact song names you like in the text area provided. Make sure to enter each song name on a separate line and use the correct case (song names are case-sensitive).
+- Use the slider to select the desired number of recommendations you want to receive (between 1 and 20).
+- Select the features you want to consider for generating the recommendations from the multiselect dropdown.
+- Click the "Recommend" button to generate song recommendations based on your input.
+
+The application will process your request and display the recommended songs along with the artist information. If any of the songs you entered are not found in the database, they will be listed separately.
 
 ## Methodology
 The Music Recommendation System employs the following methods:
