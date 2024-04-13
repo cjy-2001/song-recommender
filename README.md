@@ -39,16 +39,10 @@ git clone https://github.com/cjy-2001/song-recommender.git
 2. Install the required dependencies:
    
 ```bash
-pip install sqlite3, pandas, sklearn, argparse
+pip install -r requirements.txt
 ```
 
 3. Ensure you have a SQLite database file named music_data.sqlite containing the necessary music data.
-
-4. *(Optional)* If you want to run the streamlit web application, you will need to install streamlit:
-
-```bash
-pip install streamlit
-```
 
 ## Usage
 The Music Recommendation System can be run in two ways:
