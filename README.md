@@ -34,7 +34,7 @@ The Music Recommendation System combines the power of content-based filtering, r
 1. Clone the repository:
    
 ```bash
-git clone https://github.com/your-username/music-recommendation-system.git
+git clone https://github.com/cjy-2001/song-recommender.git
 ```
 
 2. Install the required dependencies:
