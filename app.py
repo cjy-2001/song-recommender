@@ -17,7 +17,7 @@ def main():
                 - 💡 Get insights into why each song is recommended
                 """)
     st.subheader("Enter exact song names (case-sensitive, one per line):")
-    liked_songs_input = st.text_area("", height=100)
+    liked_songs_input = st.text_area("Enter song names:", height=100)
     
     n_recommendations = st.slider("Select the number of recommendations:", min_value=1, max_value=20, value=5, step=1)
     
