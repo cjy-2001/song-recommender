@@ -37,7 +37,9 @@ def check_songs_in_database(song_list):
     songs_not_in_database = []
     
     for song_name in song_list:
-        cursor.execute("SELECT SongId FROM song WHERE Name = ?", (song_name,))
+        cleaned_song_name = song_name.strip().lower()
+
+        cursor.execute("SELECT SongId FROM song WHERE LOWER(Name) = ?", (cleaned_song_name,))
         result = cursor.fetchone()
         
         if result:

@@ -114,11 +114,11 @@ The Music Recommendation System has shown promising results, but there are sever
 1. Handling Duplicate Song Names:
 The algorithm may sometimes recommend the same song multiple times due to the presence of duplicate song entries in the database with different release years. While this indicates that the algorithm is functioning correctly, it can be enhanced to handle such duplicates more effectively.
 
-2. Case Sensitivity:
-Currently, the system treats capitalized and non-capitalized song names as different entities. To improve the user experience, the song names in the database can be converted to lowercase before processing, ensuring consistent matching regardless of capitalization.
-
-3. Expanding Rule-Based Approaches:
+2. Expanding Rule-Based Approaches:
 The current implementation primarily relies on genre-based rules for recommendations. Incorporating additional rules based on artist preferences and album information can further refine the recommendations and provide more diverse suggestions.
+
+3. Incorporating Collaborative Filtering:
+Adding collaborative filtering techniques could improve recommendation diversity and accuracy by analyzing similar user interests. This method would help identify popular songs within specific user groups, enhancing personalization and adapting to changing musical trends.
 
 ## Annotated Bibliography: 
 - K. V, S. B, U. M and V. R, "Machine Learning Model Based System Design For Music Recommendation," 2023 International Conference on System, Computation, Automation and Networking (ICSCAN), PUDUCHERRY, India, 2023, pp. 1-5, doi: 10.1109/ICSCAN58655.2023.10394917.
