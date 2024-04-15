@@ -1,14 +1,14 @@
 # Song Recommender
 This project aims to develop a music recommendation system that provides personalized song suggestions based on a user's provided songs. The system utilizes content-based filtering and rule-based approaches to generate recommendations.
 
-![Music Recommendation App Screenshot](https://github.com/cjy-2001/song-recommender/blob/main/images/main.jpg)
+![Song Recommender Screenshot](https://github.com/cjy-2001/song-recommender/blob/main/images/main.jpg)
 
 ## Introduction
-The Music Recommendation System is a powerful tool designed to help users discover new songs that align with their music preferences. By analyzing the characteristics of a user's liked songs, such as genre, artist, and audio features, the system generates personalized recommendations tailored to their unique tastes.
+The song recommender is a powerful tool designed to help users discover new songs that align with their music preferences. By analyzing the characteristics of a user's liked songs, such as genre, artist, and audio features, the system generates personalized recommendations tailored to their unique tastes.
 
-The system employs advanced algorithms and data analysis techniques to identify patterns and similarities among songs, enabling it to suggest tracks that the user is likely to enjoy. It goes beyond simple popularity-based recommendations by considering factors like genre preferences and specific audio features that contribute to the user's listening experience.
+The system employs advanced algorithms techniques to identify patterns and similarities among songs, enabling it to suggest tracks that the user is likely to enjoy. It goes beyond simple popularity-based recommendations by considering factors like genre preferences and specific audio features that contribute to the user's listening experience. Another compelling aspect of the music recommendation system is its ability to provide explanations for each recommendation. Rather than presenting a list of songs without context, the system offers insights into why a particular song is being suggested.
 
-Another compelling aspect of the Music Recommendation System is its ability to provide explanations for each recommendation. Rather than presenting a list of songs without context, the system offers insights into why a particular song is being suggested. It highlights the shared attributes between the recommended song and the user's liked songs, such as similar genres, artists, or audio features. This transparency not only enhances the user's trust in the recommendations but also fosters a deeper understanding and appreciation of their musical preferences.
+While there are other music platforms available, such as Spotify, our music recommendation system offers distinct advantages that cater to specific user needs. Firstly, it provides more control over the recommendation process through innovative strategies, such as feature selection based on immediate user reactions. This allows the system to dynamically adapt recommendations in real-time, offering a more responsive and personalized experience. Additionally, our system is designed for ease and accessibility; it doesn't require users to import or maintain a list of liked songs from major platforms, making it a lightweight and convenient choice for music discovery. 
 
 ## Features
 - Content-based filtering:
@@ -29,7 +29,7 @@ Another compelling aspect of the Music Recommendation System is its ability to p
   - Provides clear and informative explanations for each recommended song, offering insights into why a particular song is being suggested.
   - Highlights the shared attributes between the recommended song and the user's liked songs, such as similar genres, artists, or audio features.
 
-The Music Recommendation System combines the power of content-based filtering, rule-based approaches, personalization, and explanations to deliver a comprehensive and engaging music discovery experience. By leveraging these features, the system aims to help users explore new music, rediscover old favorites, and enhance their overall satisfaction with the music streaming platform.
+The Song Recommender combines the power of content-based filtering, rule-based approaches, personalization, and explanations to deliver a comprehensive and engaging music discovery experience. By leveraging these features, the system aims to help users explore new music, rediscover old favorites, and enhance their overall satisfaction with the music streaming platform.
 
 ## Installation
 1. Clone the repository:
@@ -47,9 +47,9 @@ pip install -r requirements.txt
 3. Ensure you have a SQLite database file named music_data.sqlite containing the necessary music data.
 
 ## Usage
-The Music Recommendation System can be run in two ways:
+The Song Recommender can be run in two ways:
 
-1. Command-line interface: To run the Music Recommendation System using the command-line interface, use the following command:
+1. Command-line interface: To run the Song Recommender using the command-line interface, use the following command:
 
 ```bash
 python script.py -l <liked_songs> [-n <num_recommendations>] [-f <feature_cols>]
@@ -65,13 +65,13 @@ Example:
 python script.py -l "Shape of You" "Believer" "Havana" -n 10
 ```
 
-2. Streamlit web application: To run the Music Recommendation System as a Streamlit web application, use the following command:
+2. Streamlit web application: To run the Song Recommender as a Streamlit web application, use the following command:
 
 ```bash
 streamlit run app.py
 ```
 
-This will start the Streamlit server and open the Music Recommender application in your default web browser. Once the application is running, you can interact with it through the web interface:
+This will start the Streamlit server and open the Song Recommender application in your default web browser. Once the application is running, you can interact with it through the web interface:
 - Enter the exact song names you like in the text area provided. Make sure to enter each song name on a separate line and use the correct case (song names are case-sensitive).
 - Use the slider to select the desired number of recommendations you want to receive (between 1 and 20).
 - Select the features you want to consider for generating the recommendations from the multiselect dropdown.
@@ -80,7 +80,7 @@ This will start the Streamlit server and open the Music Recommender application 
 The application will process your request and display the recommended songs along with the artist information. If any of the songs you entered are not found in the database, they will be listed separately.
 
 ## Methodology
-The Music Recommendation System employs the following methods:
+The Song Recommender employs the following methods:
 
 1. Content-Based Filtering:
    - Analyzes the inherent characteristics of songs, such as genre, artist, and audio features
@@ -91,7 +91,7 @@ The Music Recommendation System employs the following methods:
    - Considers factors like genre preferences, artist popularity, and specific audio features
 
 ## Explanation of Recommendations
-The Music Recommendation System provides explanations for each song recommendation. It highlights the shared attributes between the recommended song and the user's liked songs, such as similar genres, artists, or audio features. This transparency helps users understand why a particular song is being recommended to them.
+The Song Recommender provides explanations for each song recommendation. It highlights the shared attributes between the recommended song and the user's liked songs, such as similar genres, artists, or audio features. This transparency helps users understand why a particular song is being recommended to them.
 
 ## Sample Output
 ![output](https://github.com/cjy-2001/song-recommender/blob/main/images/output.jpg)
@@ -109,7 +109,7 @@ The Music Recommendation System provides explanations for each song recommendati
 
 ## Outlook
 
-The Music Recommendation System has shown promising results, but there are several areas for improvement and further exploration:
+The Song Recommender has shown promising results, but there are several areas for improvement and further exploration:
 
 1. Handling Duplicate Song Names:
 The algorithm may sometimes recommend the same song multiple times due to the presence of duplicate song entries in the database with different release years. While this indicates that the algorithm is functioning correctly, it can be enhanced to handle such duplicates more effectively.
