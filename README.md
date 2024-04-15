@@ -1,10 +1,11 @@
 # Song Recommender
-This project aims to develop a music recommendation system that provides personalized song suggestions based on a user's provided songs. The system utilizes content-based filtering and rule-based approaches to generate recommendations.
+
+> A music recommendation system that provides personalized song suggestions based on a user's provided songs. 
 
 ![Song Recommender Screenshot](https://github.com/cjy-2001/song-recommender/blob/main/images/main.jpg)
 
 ## Introduction
-The song recommender is a powerful tool designed to help users discover new songs that align with their music preferences. By analyzing the characteristics of a user's liked songs, such as genre, artist, and audio features, the system generates personalized recommendations tailored to their unique tastes.
+The song recommender is a powerful tool designed to help users discover new songs that align with their music preferences. The system utilizes content-based filtering and rule-based approaches to generate recommendations. By analyzing the characteristics of a user's liked songs, such as genre, artist, and audio features, the system generates personalized recommendations tailored to their unique tastes. 
 
 The system employs advanced algorithms techniques to identify patterns and similarities among songs, enabling it to suggest tracks that the user is likely to enjoy. It goes beyond simple popularity-based recommendations by considering factors like genre preferences and specific audio features that contribute to the user's listening experience. Another compelling aspect of the music recommendation system is its ability to provide explanations for each recommendation. Rather than presenting a list of songs without context, the system offers insights into why a particular song is being suggested.
 
