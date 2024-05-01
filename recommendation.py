@@ -143,6 +143,7 @@ def recommend_songs_by_cluster(liked_song_names, n_recommendations = 5, feature_
     
     cluster_allocations = allocate_recommendations(cluster_songs)
     final_recommendations = {}
+    explanations = {}
     for cluster, allocation in cluster_allocations.items():
         cluster_songs_df = candidate_songs_df[candidate_songs_df['Cluster'] == cluster].copy()
         cluster_song_features = cluster_songs_df[feature_cols]
@@ -157,17 +158,31 @@ def recommend_songs_by_cluster(liked_song_names, n_recommendations = 5, feature_
         top_songs = cluster_songs_df.head(allocation)
 
         for _, row in top_songs.iterrows():
-            final_recommendations[row['SongId']] = {'Name': row['Name'], 'Artists': get_artist_names(row['SongId'])}
+            song_id = row['SongId']
+            final_recommendations[song_id] = {'Name': row['Name'], 'Artists': get_artist_names(song_id)}
+
+            matched_genres_count = row['MatchedGenres']
+            similarity_score = row['Similarity']
+            if similarity_score > 0.8 and matched_genres_count > 3:
+                explanation = "This song is a perfect match for your taste, with a high similarity in style and a strong overlap in genres you enjoy."
+            elif similarity_score > 0.5:
+                explanation = f"This song has a good vibe match and shares several genres with your favorites."
+            else:
+                explanation = "This song might be a new flavor for you, but it still fits within the broader spectrum of your musical preferences."
+                
+            explanations[song_id] = explanation
     
     n_recommendations = min(n_recommendations, len(final_recommendations))
     random_keys = random.sample(list(final_recommendations.keys()), n_recommendations)
     random_recommendations = {key: final_recommendations[key] for key in random_keys}
+    random_explanations = {key: explanations[key] for key in random_keys}
 
-    return random_recommendations, songs_not_in_db
+    return random_recommendations, songs_not_in_db, random_explanations
 
 if __name__ == '__main__':
-    final_recommendations, songs_not_in_db = recommend_songs_by_cluster(["Harper"], 5)
+    final_recommendations, songs_not_in_db, explanations = recommend_songs_by_cluster(["Harper"], 5)
 
     # rockstar (feat. 21 Savage)
     print(f'Recommendations: {final_recommendations}') 
+    print(f'Explanations: {explanations}')
     print(f'Songs not in database: {songs_not_in_db}')

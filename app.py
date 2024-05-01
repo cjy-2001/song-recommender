@@ -32,12 +32,13 @@ def main():
             st.warning("Please select at least 4 features.")
         else:
             with st.spinner("Generating recommendations..."):
-                final_recommendations, songs_not_in_db = recommend_songs_by_cluster(liked_song_names, n_recommendations, feature_cols)
+                final_recommendations, songs_not_in_db, explanations = recommend_songs_by_cluster(liked_song_names, n_recommendations, feature_cols)
             
             if final_recommendations:
                 st.subheader("Song Recommendations:")
                 for song_id, song_info in final_recommendations.items():
                     st.write(f"- **{song_info['Name']}** by *{song_info['Artists']}*")
+                    st.caption(f"Explanation: {explanations[song_id]}")
             else:
                 st.warning("No recommendations found.")
             
@@ -46,10 +47,6 @@ def main():
                 for song_name in songs_not_in_db:
                     st.write(f"- {song_name}")
             
-            st.subheader("Explanation:")
-            st.write("""The recommendations are generated based on the selected features and the similarity of the liked songs. 
-                     The algorithm performs clustering on the song features and identifies similar songs within the same clusters. 
-                     It then allocates recommendations proportionally to the clusters and selects the most similar songs within each cluster.""")
 
 if __name__ == '__main__':
     main()
