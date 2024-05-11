@@ -138,12 +138,14 @@ def recommend_songs_by_cluster(liked_song_names, n_recommendations = 5, feature_
     candidate_songs_df = all_songs_with_clusters_df[all_songs_with_clusters_df['Cluster'].isin(liked_clusters)]
     candidate_songs_df = candidate_songs_df[~candidate_songs_df['SongId'].isin(songs_in_db.values())]
     
-    if candidate_songs_df.empty:
-        return {}, songs_not_in_db
-    
-    cluster_allocations = allocate_recommendations(cluster_songs)
     final_recommendations = {}
     explanations = {}
+    
+    if candidate_songs_df.empty:
+        return {}, songs_not_in_db, explanations
+    
+    cluster_allocations = allocate_recommendations(cluster_songs)
+
     for cluster, allocation in cluster_allocations.items():
         cluster_songs_df = candidate_songs_df[candidate_songs_df['Cluster'] == cluster].copy()
         cluster_song_features = cluster_songs_df[feature_cols]

@@ -30,6 +30,7 @@ if __name__ == '__main__':
     if invalid_features:
         parser.error(f"Invalid feature column(s): {', '.join(invalid_features)}. Available features: {', '.join(DEFAULT_FEATURE_COLS)}")
 
-    final_recommendations, songs_not_in_db = recommend_songs_by_cluster(liked_song_names, n_recommendations, feature_cols)
+    final_recommendations, songs_not_in_db, explanations = recommend_songs_by_cluster(liked_song_names, n_recommendations, feature_cols)
     print(f'Recommendations: {final_recommendations}')
+    print(f'Explanations: {explanations}')
     print(f'Songs not in database: {songs_not_in_db}')
